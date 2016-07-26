@@ -1,0 +1,253 @@
+\documentclass[10pt,oneside]{article}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{etoolbox}
+\usepackage{multicol}
+
+\pagestyle{empty}
+\geometry{letterpaper,tmargin=0.6in,bmargin=0.6in,lmargin=.9in,rmargin=.9in,headheight=0in,headsep=0in,footskip=.3in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+% Name and contact information
+\newcommand{\name}{Derek Jones}
+\newcommand{\homeaddrtop}{56 La Honda Court}
+\newcommand{\homeaddrbot}{Clayton, California, 94517}
+\newcommand{\cellphone}{(925) 348-0232}
+\newcommand{\email}{DerekJones@asu.edu}
+\newcommand{\github}{http://www.github.com/dj0wns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New commands and environments
+
+% This defines how the name looks
+\newcommand{\bigname}[1]{
+	\begin{center}\huge\scshape#1\end{center}
+}
+
+\newcommand{\sectitle}[1]{
+	\begin{flushleft}{\fontfamily{phv}\selectfont\Large#1}\end{flushleft}
+}
+
+% A ressection is a main section (<H1>Section</H1>)
+\newenvironment{ressection}[1]{
+	\vspace{2pt}
+	\sectitle{#1}
+	\vspace{-10pt}\rule{\textwidth}{0.5pt}
+	\vspace{-10pt}
+	\begin{itemize}
+	\vspace{3pt}
+}{
+	\end{itemize}
+}
+
+% A resitem is a simple list element in a ressection (first level)
+\newcommand{\resitem}[1]{
+	\vspace{-4pt}
+	%\item \begin{flushleft} #1 \end{flushleft}
+	\item \begin{flushleft} #1 \end{flushleft}
+	%\item[\(\circ\) ] \begin{flushleft} #1 \end{flushleft}
+}
+
+% A ressubitem is a simple list element in anything but a ressection (second level)
+\newcommand{\ressubitem}[1]{
+	\vspace{-1pt}
+	\item \begin{flushleft} #1 \end{flushleft}
+}
+
+% A resmeditem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+\newcommand{\resmeditem}[2]{
+	\vspace{-5pt}
+	\item
+	%\item
+	\textbf{#1}---#2
+}
+% A resbigitem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+%  Arg 3: Title and/or date range
+\newcommand{\resbigitem}[3]{
+	\vspace{-5pt}
+	\item
+	%\item
+	\textbf{#1}---#2 \\
+	\textit{#3}
+}
+
+% A resititem is a list element that just does an italic item for the sole
+% purpose of expanding jobs at the same company
+\newcommand{\resititem}[1]{
+	\vspace{-5pt}
+	\textit{#1}
+}
+
+% This is a list that comes with a resbigitem
+\newenvironment{ressubsec}[3]{
+	\resbigitem{#1}{#2}{#3}
+	\vspace{-2pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+% This is a list that comes with a resbigitem
+\newenvironment{ressubsecshort}[2]{
+	\resmeditem{#1}{#2}
+	\vspace{-2pt}
+	\begin{itemize}
+	}{
+	\end{itemize}
+}
+
+%This is a list that just has the italic extras
+\newenvironment{ressubsec2}[1]{
+	\resititem{#1}
+	\vspace{-2pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+
+% This is a simple sublist
+\newenvironment{reslist}[1]{
+	\resitem{\textbf{#1}}
+	\vspace{-5pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+
+% A resreference is a references section
+\newenvironment{resreference}[2]{
+	\vspace{14pt}
+	{\fontfamily{phv}\selectfont\Large#1}
+
+
+	\vspace{10pt}
+
+
+	\begin{tabular}{#2}
+	\vspace{0pt}
+}{
+	\end{tabular}
+}
+
+% reduce spacing between lines
+\AfterEndEnvironment{ressubsec}{\vspace{-.3\baselineskip}}
+
+\AfterEndEnvironment{ressubsecshort}{\vspace{-.3\baselineskip}}
+
+\AfterEndEnvironment{ressubitem}{\vspace{-.3\baselineskip}}
+
+\BeforeBeginEnvironment{ressection}{\vspace{.2\baselineskip}}
+\AfterEndEnvironment{ressection}{\vspace{-.2\baselineskip}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now for the actual document:
+
+\begin{document}
+
+\fontfamily{ppl} \selectfont
+
+% Name with horizontal rule
+\bigname{\name}
+\vspace{-6pt} \rule{\textwidth}{1pt}
+\vspace{-22pt}
+\begin{multicols}{3}
+	
+	{\bfseries Current Address}\\
+	\homeaddrtop\\
+	\homeaddrbot\\
+	\cellphone\\
+	
+	\columnbreak
+	\begin{center}
+		\email\\
+		\github\\
+	\end{center}
+	
+	\columnbreak
+	\hfill \\
+	\hfill\\
+
+\end{multicols}
+
+\vspace{-24 pt}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{\baselineskip}
+\begin{ressection}{Education}
+	\begin{ressubsec}{Barrett, The Honors College at Arizona State University}{Tempe, AZ}{Bachelor of Science in Computer Science -- May 2017}
+		\ressubitem{Ira A. Fulton Schools of Engineering}
+		\ressubitem{ASU Provost Scholarship - 6 Semesters}
+	\end{ressubsec}
+%	\begin{ressubsec}{Kutztown University}{Washington, DC}{Ph.D. in Computer Science}
+%		\ressubitem{GPA: 3.9} 
+%		\ressubitem{Anticipated Graduation Date: December 2016}
+%	\end{ressubsec}
+%	\resitem{\textbf{Previous Coursework:} Algorithm Design, Theory of Computation, Networking, Wireless Networking, System Architecture, Operating Systems, Parallel Programming, Data Mining, Machine Learning, Compilers, Network Security, Operating Systems Security, Linear Algebra, Differential Equations, Vector Calculus, Mathematical Modeling, Cryptography, Analog Electronics, Modern Physics, Waves and Optics, and Quantum Mechanics}
+	
+
+\end{ressection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ressection}{Qualifications}
+	\resitem{Excellent problem solving skills}
+
+	\resitem{Experience using Git and bug trackers in a production environment}
+
+	\resitem{Good written and verbal communication skills developed through team projects and presentations}
+
+	\begin{reslist}{Computer Languages and Environments:}
+		\ressubitem{Proficient in C and C++}
+		\ressubitem{Experience with Java, OpenMP, MPI, Bash, Gnuplot, and LaTeX}
+		\ressubitem{Exposure to Python, Go, Javascript, SQL and Matlab}
+	\end{reslist}
+
+	\resitem{\textbf{Operating Systems:} Windows,
+	UNIX/Linux (Arch, Redhat, Ubuntu)}
+
+\end{ressection}
+
+
+\begin{ressection}{Work Experience}
+  \begin{ressubsec}{Software Engineering Intern}{Lawrence Livermore National Laboratory}{May 2016 -- August 2016}
+    \ressubitem{Implemented and analyzed various acceleration structures for use within LLNL's Monte Carlo Particle Transport Code, Mercury}
+  \end{ressubsec}
+	
+  \begin{ressubsec}{Software Engineering Intern}{ViaSat Inc.}{May 2015 -- August 2015}
+    \ressubitem{Designed, implemented and tested an Android collaboration application tailored for operation over satellite networks}
+  \end{ressubsec}
+
+\end{ressection}
+
+\begin{ressection}{Projects}
+	\begin{ressubsec}{api-taco}{Pennapps XII}{Go, 2 People}
+		\ressubitem{Developed a RESTful api running on the Microsoft Azure cloud which would query user specified
+		elements on web pages and store a history of all changes to that element for the user to later retrieve}
+	\end{ressubsec}
+	\begin{ressubsec}{snackbot}{Viasat Intern Hackathon}{Java/Python, 4 People}
+		\ressubitem{Using a Raspberry Pi and an RC car, developed, with a team, a robotic car which would receive snack
+		orders from an accompanying Android App. The car would then navigate to the user to deliver the snack}
+	\end{ressubsec}
+\end{ressection}
+
+\begin{ressection}{Experience}
+	\begin{ressubsec}{Student Cluster Competition 2015}{SuperComputing 15 Conference}{Arizona Tri-University Team}
+		\ressubitem{Collaborated with 4 other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
+		HPCG in a UNIX environment using the Slurm workload manager}
+		\ressubitem{Competed to compute the provided data sets in the fastest time over a 3 day period}
+	\end{ressubsec}
+	\begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
+		\ressubitem{Collaborated with two teammates to solve logic problems in C++}
+	\end{ressubsecshort}
+\end{ressection}
+\end{document}

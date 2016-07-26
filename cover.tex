@@ -1,0 +1,172 @@
+\documentclass[10pt,oneside]{article}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+%\usepackage{lipsum}
+
+\pagestyle{empty}
+\geometry{letterpaper,tmargin=1.5in,bmargin=.5in,lmargin=.9in,rmargin=.9in,headheight=0in,headsep=0in,footskip=.3in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+% Name and contact information
+\newcommand{\name}{John Doe}
+\newcommand{\focoaddrtop}{123 Fourth Street}
+\newcommand{\focoaddrbot}{Springfield, Illinois, 62701}
+\newcommand{\homeaddrtop}{567 Eigth Street}
+\newcommand{\homeaddrbot}{Springfield, Oregon, 97475}
+\newcommand{\cellphone}{(555) 123-4567}
+\newcommand{\homephone}{(555) 890-1234}
+\newcommand{\email}{doe@gmail.edu}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New commands and environments
+
+% This defines how the name looks
+\newcommand{\bigname}[1]{
+	\begin{center}\huge\scshape#1\end{center}
+}
+
+% A ressection is a main section (<H1>Section</H1>)
+\newenvironment{ressection}[1]{
+	\vspace{4pt}
+	{\fontfamily{phv}\selectfont\Large#1}
+	\begin{itemize}
+	\vspace{3pt}
+}{
+	\end{itemize}
+}
+
+% A resitem is a simple list element in a ressection (first level)
+\newcommand{\resitem}[1]{
+	\vspace{-4pt}
+	%\item \begin{flushleft} #1 \end{flushleft}
+	\item \begin{flushleft} #1 \end{flushleft}
+	%\item[\(\circ\) ] \begin{flushleft} #1 \end{flushleft}
+}
+
+% A ressubitem is a simple list element in anything but a ressection (second level)
+\newcommand{\ressubitem}[1]{
+	\vspace{-1pt}
+	\item \begin{flushleft} #1 \end{flushleft}
+}
+
+% A resbigitem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+%  Arg 3: Title and/or date range
+\newcommand{\resbigitem}[3]{
+	\vspace{-5pt}
+	\item
+	%\item
+	\textbf{#1}---#2 \\
+	\textit{#3}
+}
+
+% A resititem is a list element that just does an italic item for the sole
+% purpose of expanding jobs at the same company
+\newcommand{\resititem}[1]{
+	\vspace{-5pt}
+	\textit{#1}
+}
+
+
+% This is a list that comes with a resbigitem
+\newenvironment{ressubsec}[3]{
+	\resbigitem{#1}{#2}{#3}
+	\vspace{-2pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+
+%This is a list that just has the italic extras
+\newenvironment{ressubsec2}[1]{
+	\resititem{#1}
+	\vspace{-2pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+
+% This is a simple sublist
+\newenvironment{reslist}[1]{
+	\resitem{\textbf{#1}}
+	\vspace{-5pt}
+	\begin{itemize}
+}{
+	\end{itemize}
+}
+
+% A resreference is a references section
+\newenvironment{resreference}[2]{
+	\vspace{14pt}
+	{\fontfamily{phv}\selectfont\Large#1}
+
+
+	\vspace{10pt}
+
+
+	\begin{tabular}{#2}
+	\vspace{0pt}
+}{
+	\end{tabular}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now for the actual document:
+
+\begin{document}
+
+\fontfamily{ppl} \selectfont
+
+% Name with horizontal rule
+\bigname{\name}
+\vspace{-8pt} \rule{\textwidth}{1pt}
+
+\vspace{-1pt} {\small\bfseries Current Address \hfill \mdseries\email \hfill \bfseries Permanent Address}
+
+\vspace{-1pt} {\small\itshape \focoaddrtop \hfill \homeaddrtop}
+
+\vspace{-1pt} {\small\itshape \focoaddrbot \hfill \homeaddrbot}
+
+\vspace{-1pt} {\small\itshape \cellphone \hfill \homephone}
+
+
+
+\vspace{8 pt}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\large January 1, 1970
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\large To Whom It May Concern:
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+
+\vspace{\baselineskip}
+
+ 
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+Sincerely,
+
+\vspace{\baselineskip}
+
+John Doe
+\end{document}
+
