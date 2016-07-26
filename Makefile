@@ -1,13 +1,14 @@
 all: resume.pdf
 
-resume.pdf: resume.tex
-	pdflatex resume.tex
+resume.pdf: src/resume.tex
+	pdflatex src/resume.tex 
+	rm *.log *.aux
 
-cover.pdf: cover.tex
-	pdflatex cover.tex
+cover.pdf: src/cover.tex
+	pdflatex src/cover.tex
 
-cover_resume.pdf: resume.pdf cover.pdf
-	pdfunite cover.pdf resume.pdf cover_resume.pdf
+cover_resume.pdf: src/resume.pdf src/cover.pdf
+	pdfunite src/cover.pdf src/resume.pdf src/cover_resume.pdf
 
 clean:
-	rm *.aux *.log *.pdf
+	rm src/*.aux src/*.log src/*.pdf
