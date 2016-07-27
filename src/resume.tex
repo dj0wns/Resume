@@ -68,6 +68,19 @@
 	%\item
 	\textbf{#1}---#2
 }
+
+% A resbigitem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+%  Arg 3: Title and/or date range
+\newcommand{\resbigitemline}[3]{
+	\vspace{-5pt}
+	\item
+	%\item
+	\textbf{#1}---#2, 
+	\textit{#3}
+}
+
 % A resbigitem is a complex list element for stuff like jobs and education:
 %  Arg 1: Name of company or university
 %  Arg 2: Location
@@ -104,9 +117,9 @@
 	\end{itemize}
 }
 
-%This is a list that just has the italic extras
-\newenvironment{ressubsec2}[1]{
-	\resititem{#1}
+%List with inline resbigitem
+\newenvironment{ressubsecline}[3]{
+	\resbigitemline{#1}{#2}{#3}
 	\vspace{-2pt}
 	\begin{itemize}
 }{
@@ -230,22 +243,22 @@
 \end{ressection}
 
 \begin{ressection}{Projects}
-	\begin{ressubsec}{api-taco}{Pennapps XII}{Go, 2 People}
+	\begin{ressubsecline}{api-taco}{Pennapps XII}{Go - 2 People}
 		\ressubitem{Developed a RESTful api running on the Microsoft Azure cloud which would query user specified
 		elements on web pages and store a history of all changes to that element for the user to later retrieve}
-	\end{ressubsec}
-	\begin{ressubsec}{snackbot}{Viasat Intern Hackathon}{Java/Python, 4 People}
+	\end{ressubsecline}
+	\begin{ressubsecline}{snackbot}{Viasat Intern Hackathon}{Java/Python - 4 People}
 		\ressubitem{Using a Raspberry Pi and an RC car, developed, with a team, a robotic car which would receive snack
 		orders from an accompanying Android App. The car would then navigate to the user to deliver the snack}
-	\end{ressubsec}
+	\end{ressubsecline}
 \end{ressection}
 
 \begin{ressection}{Experience}
-	\begin{ressubsec}{Student Cluster Competition 2015}{SuperComputing 15 Conference}{Arizona Tri-University Team}
+	\begin{ressubsecline}{Student Cluster Competition 2015}{SuperComputing 15 Conference}{Arizona Tri-University Team}
 		\ressubitem{Collaborated with 4 other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
 		HPCG in a UNIX environment using the Slurm workload manager}
 		\ressubitem{Competed to compute the provided data sets in the fastest time over a 3 day period}
-	\end{ressubsec}
+	\end{ressubsecline}
 	\begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
 		\ressubitem{Collaborated with two teammates to solve logic problems in C++}
 	\end{ressubsecshort}
