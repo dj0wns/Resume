@@ -106,7 +106,7 @@
 % This is a list that comes with a resbigitem
 \newenvironment{ressubsec}[3]{
 	\resbigitem{#1}{#2}{#3}
-	\vspace{-2pt}
+	\vspace{-4pt}
 	\begin{itemize}
 }{
 	\end{itemize}
@@ -114,7 +114,7 @@
 % This is a list that comes with a resbigitem
 \newenvironment{ressubsecshort}[2]{
 	\resmeditem{#1}{#2}
-	\vspace{-2pt}
+	\vspace{-4pt}
 	\begin{itemize}
 	}{
 	\end{itemize}
@@ -154,12 +154,13 @@
 }
 
 % reduce spacing between lines
-\AfterEndEnvironment{ressubsec}{\vspace{-.3\baselineskip}}
+\AfterEndEnvironment{ressubsec}{\vspace{-.2\baselineskip}}
 
-\AfterEndEnvironment{ressubsecshort}{\vspace{-.3\baselineskip}}
+\AfterEndEnvironment{ressubsecshort}{\vspace{-.5\baselineskip}}
 
-\AfterEndEnvironment{ressubitem}{\vspace{-.3\baselineskip}}
+\AfterEndEnvironment{ressubitem}{\vspace{-.5\baselineskip}}
 
+\AfterEndEnvironment{resitem}{\vspace{-.5\baselineskip}}
 \BeforeBeginEnvironment{ressection}{\vspace{.2\baselineskip}}
 \AfterEndEnvironment{ressection}{\vspace{-.2\baselineskip}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,15 +207,8 @@
 \begin{ressection}{Education}
 	\begin{ressubsec}{Barrett, The Honors College at Arizona State University}{Tempe, AZ}{Bachelor of Science in Computer Science -- May 2017}
 		\ressubitem{Ira A. Fulton Schools of Engineering}
-		\ressubitem{ASU Provost Scholarship - 6 Semesters}
+		\ressubitem{ASU Provost Scholarship - 8 Semesters}
 	\end{ressubsec}
-%	\begin{ressubsec}{Kutztown University}{Washington, DC}{Ph.D. in Computer Science}
-%		\ressubitem{GPA: 3.9} 
-%		\ressubitem{Anticipated Graduation Date: December 2016}
-%	\end{ressubsec}
-%	\resitem{\textbf{Previous Coursework:} Algorithm Design, Theory of Computation, Networking, Wireless Networking, System Architecture, Operating Systems, Parallel Programming, Data Mining, Machine Learning, Compilers, Network Security, Operating Systems Security, Linear Algebra, Differential Equations, Vector Calculus, Mathematical Modeling, Cryptography, Analog Electronics, Modern Physics, Waves and Optics, and Quantum Mechanics}
-	
-
 \end{ressection}
 
 
@@ -229,7 +223,7 @@
 	\begin{reslist}{Computer Languages and Environments:}
 		\ressubitem{Proficient in C and C++}
 		\ressubitem{Experience with Java, OpenMP, MPI, Bash, Gnuplot, and LaTeX}
-		\ressubitem{Exposure to Python, Go, Javascript, SQL and Matlab}
+		\ressubitem{Exposure to Python, Go, Javascript, SQL, and Matlab}
 	\end{reslist}
 
 	\resitem{\textbf{Operating Systems:} Windows,
@@ -250,6 +244,9 @@
 \end{ressection}
 
 \begin{ressection}{Projects}
+	\begin{ressubsecline}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C++ - 1 Person, WIP}
+		\ressubitem{In a collaborative effort with the Lawrence Livermore National Laboratory, I am creating a virtual reality visualization of Mercury utilizing a HTC Vive}
+	\end{ressubsecline}
 	\begin{ressubsecline}{api-taco}{Pennapps XII}{Go - 2 People}
 		\ressubitem{Developed a RESTful api running on the Microsoft Azure cloud which would query user specified
 		elements on web pages and store a history of all changes to that element for the user to later retrieve}
@@ -262,9 +259,9 @@
 
 \begin{ressection}{Experience}
 	\begin{ressubsecline}{SuperComputing 15 Conference}{Student Cluster Competition 2015}{Arizona Tri-University Team}
-		\ressubitem{Collaborated with 4 other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
+		\ressubitem{Collaborated with four other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
 		HPCG in a UNIX environment using the Slurm workload manager}
-		\ressubitem{Competed to compute the provided data sets in the fastest time over a 3 day period}
+	\ressubitem{Competed to compute the provided data sets in the fastest time over a three day period}
 	\end{ressubsecline}
 	\begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
 		\ressubitem{Collaborated with two teammates to solve logic problems in C++}
