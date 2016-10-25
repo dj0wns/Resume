@@ -9,6 +9,7 @@ resume.pdf: src/resume.tex
 
 cover.pdf: src/cover.tex
 	pdflatex src/cover.tex
+	rm *.log *.aux
 
 cover_resume.pdf: src/resume.pdf src/cover.pdf
 	pdfunite src/cover.pdf src/resume.pdf src/cover_resume.pdf
