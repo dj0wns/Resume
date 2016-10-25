@@ -1,4 +1,7 @@
-all: resume.pdf
+all: resume.pdf png
+
+png: 
+	convert -density 300 resume.pdf images/resume.png
 
 resume.pdf: src/resume.tex
 	pdflatex src/resume.tex 
