@@ -7,7 +7,7 @@ resume.pdf: src/resume.tex
 	pdflatex src/resume.tex 
 	rm *.log *.aux
 
-cover.pdf: src/cover.tex
+cover.pdf: src/cover.tex  Data/paragraph*.txt
 	pdflatex src/cover.tex
 	rm *.log *.aux
 
