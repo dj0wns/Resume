@@ -4,9 +4,10 @@
 \usepackage{amsfonts}
 \usepackage{etoolbox}
 \usepackage{multicol}
+\usepackage{enumitem}
 
 \pagestyle{empty}
-\geometry{letterpaper,tmargin=0.6in,bmargin=0.6in,lmargin=.9in,rmargin=.9in,headheight=0in,headsep=0in,footskip=.3in}
+\geometry{letterpaper,tmargin=0.6in,bmargin=0.6in,lmargin=.85in,rmargin=.85in,headheight=0in,headsep=0in,footskip=.3in}
 
 \setlength{\parindent}{0in}
 \setlength{\parskip}{0in}
@@ -16,11 +17,11 @@
 
 % Name and contact information
 \newcommand{\name}{Derek Jones}
-\newcommand{\homeaddrtop}{56 La Honda Court}
-\newcommand{\homeaddrbot}{Clayton, California 94517}
-\newcommand{\schooladdrtop}{APT 1039}
-\newcommand{\schooladdrmid}{977 E. Apache Boulevard}
-\newcommand{\schooladdrbot}{Tempe, Arizona 85281}
+\newcommand{\homeaddrtop}{}
+\newcommand{\homeaddrbot}{}
+\newcommand{\schooladdrtop}{APT 2404}
+\newcommand{\schooladdrmid}{145 Ames St}
+\newcommand{\schooladdrbot}{Marlborough, MA 01752}
 \newcommand{\cellphone}{(925) 348-0232}
 \newcommand{\email}{DerekJones@asu.edu}
 \newcommand{\github}{http://www.github.com/dj0wns}
@@ -29,48 +30,48 @@
 
 % This defines how the name looks
 \newcommand{\bigname}[1]{
-	\begin{center}\huge\scshape#1\end{center}
+  \begin{center}\huge\scshape#1\end{center}
 }
 
 %\fontfamily{phv}
 \newcommand{\sectitle}[1]{
-	\begin{flushleft}{\selectfont\Large#1}\end{flushleft}
+  \begin{flushleft}{\selectfont\Large#1}\end{flushleft}
 }
 
 % A ressection is a main section (<H1>Section</H1>)
 \newenvironment{ressection}[1]{
-	\vspace{2pt}
-	\sectitle{#1}
-	\vspace{-10pt}\rule{\textwidth}{0.5pt}
-	\vspace{-10pt}
-	\begin{itemize}
-	\vspace{3pt}
+  \vspace{2pt}
+  \sectitle{#1}
+  \vspace{-10pt}\rule{\textwidth}{0.5pt}
+  \vspace{-10pt}
+  \begin{itemize}[leftmargin=13pt]
+  \vspace{3pt}
 }{
-	\end{itemize}
+  \end{itemize}
 }
 
 % A resitem is a simple list element in a ressection (first level)
 \newcommand{\resitem}[1]{
-	\vspace{-4pt}
-	%\item \begin{flushleft} #1 \end{flushleft}
-	\item \begin{flushleft} #1 \end{flushleft}
-	%\item[\(\circ\) ] \begin{flushleft} #1 \end{flushleft}
+  \vspace{-4pt}
+  %\item \begin{flushleft} #1 \end{flushleft}
+  \item \begin{flushleft} #1 \end{flushleft}
+  %\item[\(\circ\) ] \begin{flushleft} #1 \end{flushleft}
 }
 
 % A ressubitem is a simple list element in anything but a ressection (second level)
 \newcommand{\ressubitem}[1]{
-	\vspace{-1pt}
-	\item \begin{flushleft} #1 \end{flushleft}
+  \vspace{-1pt}
+  \item \begin{flushleft} #1 \end{flushleft}
 }
 
 % A resmeditem is a complex list element for stuff like jobs and education:
 %  Arg 1: Name of company or university
 %  Arg 2: Location
 \newcommand{\resmeditem}[2]{
-	\vspace{-5pt}
-	\item
-	%\item
-	\textbf{#1}---#2
+  \vspace{-5pt}
+  \item
+  %\item
+  \textbf{#1}---#2
 }
 
 % A resbigitem is a complex list element for stuff like jobs and education:
@@ -78,11 +79,11 @@
 %  Arg 2: Location
 %  Arg 3: Title and/or date range
 \newcommand{\resbigitemline}[3]{
-	\vspace{-5pt}
-	\item
-	%\item
-	\textbf{#1}---#2, 
-	\textit{#3}
+  \vspace{-5pt}
+  \item
+  %\item
+  \textbf{#1}---#2, 
+  \textit{#3}
 }
 
 % A resbigitem is a complex list element for stuff like jobs and education:
@@ -90,71 +91,74 @@
 %  Arg 2: Location
 %  Arg 3: Title and/or date range
 \newcommand{\resbigitem}[3]{
-	\vspace{-5pt}
-	\item
-	%\item
-	\textbf{#1}---#2 \\
-	\textit{#3}
+  \vspace{-5pt}
+  \item
+  %\item
+  \textbf{#1}---#2 \\
+  \textit{#3}
 }
 
 % A resititem is a list element that just does an italic item for the sole
 % purpose of expanding jobs at the same company
 \newcommand{\resititem}[1]{
-	\vspace{-5pt}
-	\textit{#1}
+  \vspace{-5pt}
+  \textit{#1}
 }
 
 % This is a list that comes with a resbigitem
 \newenvironment{ressubsec}[3]{
-	\resbigitem{#1}{#2}{#3}
-	\vspace{-4pt}
-	\begin{itemize}
+  \resbigitem{#1}{#2}{#3}
+  \vspace{-4pt}
+  \begin{itemize}[leftmargin=*]
+
 }{
-	\end{itemize}
+  \end{itemize}
 }
 % This is a list that comes with a resbigitem
 \newenvironment{ressubsecshort}[2]{
-	\resmeditem{#1}{#2}
-	\vspace{-4pt}
-	\begin{itemize}
-	}{
-	\end{itemize}
+  \resmeditem{#1}{#2}
+  \vspace{-4pt}
+  \begin{itemize}
+  }{
+  \end{itemize}
 }
 
 %List with inline resbigitem
 \newenvironment{ressubsecline}[3]{
-	\resbigitemline{#1}{#2}{#3}
-	\vspace{-2pt}
-	\begin{itemize}
+  \resbigitemline{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}
 }{
-	\end{itemize}
+  \end{itemize}
 }
 
 % This is a simple sublist
 \newenvironment{reslist}[1]{
-	\resitem{\textbf{#1}}
-	\vspace{-5pt}
-	\begin{itemize}
+  \resitem{\textbf{#1}}
+  \vspace{-5pt}
+  \begin{itemize}
 }{
-	\end{itemize}
+  \end{itemize}
 }
 
 % A resreference is a references section
 \newenvironment{resreference}[2]{
-	\vspace{14pt}
-	{\fontfamily{phv}\selectfont\Large#1}
+  \vspace{14pt}
+  {\fontfamily{phv}\selectfont\Large#1}
 
 
-	\vspace{10pt}
+  \vspace{10pt}
 
 
-	\begin{tabular}{#2}
-	\vspace{0pt}
+  \begin{tabular}{#2}
+  \vspace{0pt}
 }{
-	\end{tabular}
+  \end{tabular}
 }
 
 % reduce spacing between lines
+
+
 \AfterEndEnvironment{ressubsec}{\vspace{-.2\baselineskip}}
 
 \AfterEndEnvironment{ressubsecshort}{\vspace{-.5\baselineskip}}
@@ -174,31 +178,17 @@
 % Name with horizontal rule
 \bigname{\name}
 \vspace{-6pt} \rule{\textwidth}{1pt}
-\vspace{-22pt}
-\begin{multicols}{3}
-	
-	{\bfseries Current Address}\\
-	\schooladdrtop \\
-	\schooladdrmid \\
-	\schooladdrbot \\
-	
-	\columnbreak
-	\begin{center}
-		\cellphone \\
-		\email\\
-		\github\\
-	\end{center}
-	
-	\columnbreak
-	\begin{flushright}
-	{\bfseries Permanent Address}\\
-	\homeaddrtop\\
-	\homeaddrbot\\
-	\end{flushright}
+\vspace{-10pt}
 
-\end{multicols}
+\begin{center}
+% \begin{multicols}{3}
+  \cellphone \\
+  \email \\
+  \github \\
+% \end{multicols}
+\end{center}
 
-\vspace{-24 pt}
+\vspace{-26 pt}
 
 
 
@@ -206,40 +196,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{\baselineskip}
 \begin{ressection}{Education}
-	\begin{ressubsec}{Barrett, The Honors College at Arizona State University}{Tempe, AZ}{Bachelor of Science in Computer Science -- May 2017}
-		\ressubitem{Ira A. Fulton Schools of Engineering}
-		\ressubitem{ASU Provost Scholarship - 8 Semesters}
-	\end{ressubsec}
+  \resbigitem{Bachelor of Science in Computer Science}{Arizona State University, Tempe, AZ}{May 2017}
+  % \ressubitem{Ira A. Fulton Schools of Engineering}
+  %\end{ressubsec}
 \end{ressection}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Qualifications}
-	\resitem{Excellent problem solving skills}
 
-	\resitem{Experience using Git and bug trackers in a production environment}
+  \resitem{Experience using Git and bug trackers in a production environment}
 
-	\resitem{Strong written and verbal communication skills developed through team projects and presentations}
+  \resitem{Strong written and verbal communication skills developed through team projects and presentations}
 
-	\begin{reslist}{Computer Languages and Environments:}
-		\ressubitem{Proficient in C and C++}
-		\ressubitem{Experience with Java, OpenMP, MPI, Bash, Gnuplot, and LaTeX}
-		\ressubitem{Exposure to Python, Go, Javascript, SQL, and Matlab}
-	\end{reslist}
+  \begin{reslist}{Computer Languages and Environments:}
+    \ressubitem{Proficient in C and C++}
+    \ressubitem{Experience with Java, OpenMP, MPI, Bash, Gnuplot, and LaTeX}
+    \ressubitem{Exposure to Python, Go, Javascript, SQL, and Matlab}
+  \end{reslist}
 
-	\resitem{\textbf{Operating Systems:} Windows,
-	UNIX/Linux (Arch, Redhat, Ubuntu)}
+  \resitem{\textbf{Operating Systems:} Windows,
+  UNIX/Linux (Arch, Redhat, Ubuntu)}
 
 \end{ressection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Work Experience}
-	\begin{ressubsec}{Software Engineering Intern}{Lawrence Livermore National Laboratory, High Energy Density Physics}{May 2016 -- August 2016}
+  \begin{ressubsec}{Electrical Engineer}{Raytheon, Radar Signal Processing}{June 2017 -- Present}
+    \ressubitem{Software development for next generation Radar Signal Processing applications utilizing a distributed high performance computing architecture with strong emphasis on vectorization}
+    \ressubitem{Development consists of C++11 in Linux using Totalview, Boost.test, and Rational Clearcase}
+  \end{ressubsec}
+  
+  \begin{ressubsec}{Software Engineering Intern}{Lawrence Livermore National Laboratory, High Energy Density Physics}{May 2016 -- August 2016}
     \ressubitem{Implemented and analyzed various acceleration structures for use within LLNL's Monte Carlo Particle Transport Code, Mercury}
   \end{ressubsec}
-	
+  
   \begin{ressubsec}{Software Engineering Intern}{ViaSat Inc.}{May 2015 -- August 2015}
-    \ressubitem{Designed, implemented and tested an Android collaboration application tailored for operation over satellite networks}
+    \ressubitem{Designed, implemented, and tested an Android collaboration application tailored for operation over satellite networks}
   \end{ressubsec}
 
 \end{ressection}
@@ -248,30 +241,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Projects}
-	\begin{ressubsecline}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C++ - 1 Person, WIP}
-		\ressubitem{In a collaborative effort with the Lawrence Livermore National Laboratory, I am creating a virtual reality visualization of Mercury utilizing a HTC Vive}
-	\end{ressubsecline}
-	\begin{ressubsecline}{api-taco}{Pennapps XII}{Go - 2 People}
-		\ressubitem{Developed a RESTful api running on the Microsoft Azure cloud which would query user specified
-		elements on web pages and store a history of all changes to that element for the user to later retrieve}
-	\end{ressubsecline}
-	\begin{ressubsecline}{snackbot}{ViaSat Intern Hackathon}{Java/Python - 4 People}
-		\ressubitem{Using a Raspberry Pi and an RC car, developed, with a team, a robotic car which would receive snack
-		orders from an accompanying Android App. The car would then navigate to the user to deliver the snack}
-	\end{ressubsecline}
+  \begin{ressubsecline}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C++ - 1 Person}
+    \ressubitem{In a collaborative effort with the Lawrence Livermore National Laboratory, I created a virtual reality visualization of the particle transport code Mercury, utilizing an HTC Vive}
+    \ressubitem{Developed a system for generating three dimensional primitives in Unity, modified a constructive solid geometry library to allow the creation of more complex shapes, and implemented HTC vive support}
+  \end{ressubsecline}
+  \begin{ressubsecline}{RAID-Like Cloud Storage}{Pennapps XV - Top 30}{C++/Python - 3 People}
+    \ressubitem{Created a mountable virtual drive for distributing, encrypting, and retrieving files across multiple cloud storage providers}
+    \ressubitem{Developed the FUSE filesystem implementation, added encryption and decryption functionality, developed the simulated RAID method of file splitting, and created the hooks for sending and receiving data}
+  \end{ressubsecline}
+
 \end{ressection}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Competitions}
-	\begin{ressubsecline}{SuperComputing 15 Conference}{Student Cluster Competition 2015}{Arizona Tri-University Team}
-		\ressubitem{Collaborated with four other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
-		HPCG in a UNIX environment using the Slurm workload manager}
-	\ressubitem{Competed to compute the provided data sets in the fastest time over a three day period}
-	\end{ressubsecline}
-	\begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
-		\ressubitem{Collaborated with two teammates to solve logic problems in C++}
-	\end{ressubsecshort}
+  \begin{ressubsecline}{SuperComputing 15 Conference}{Student Cluster Competition 2015}{Arizona Tri-University Team}
+    \ressubitem{Collaborated with four other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
+    HPCG in a UNIX environment using the Slurm workload manager}
+  \ressubitem{Competed to compute the provided data sets in the fastest time over a three day period}
+  \end{ressubsecline}
+  \begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
+    \ressubitem{Collaborated with two teammates to solve logic problems in C++}
+  \end{ressubsecshort}
 \end{ressection}
 \end{document}
