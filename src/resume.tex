@@ -5,6 +5,7 @@
 \usepackage{etoolbox}
 \usepackage{multicol}
 \usepackage{enumitem}
+\usepackage{inconsolata}
 
 \pagestyle{empty}
 \geometry{letterpaper,tmargin=0.6in,bmargin=0.6in,lmargin=.85in,rmargin=.85in,headheight=0in,headsep=0in,footskip=.3in}
@@ -17,20 +18,18 @@
 
 % Name and contact information
 \newcommand{\name}{Derek Jones}
-\newcommand{\homeaddrtop}{}
-\newcommand{\homeaddrbot}{}
-\newcommand{\schooladdrtop}{APT 2404}
-\newcommand{\schooladdrmid}{145 Ames St}
-\newcommand{\schooladdrbot}{Marlborough, MA 01752}
 \newcommand{\cellphone}{(925) 348-0232}
 \newcommand{\email}{DerekJones@asu.edu}
-\newcommand{\github}{http://www.github.com/dj0wns}
+\newcommand{\github}{GitHub \texttt{@dj0wns}}
+\newcommand{\linkedin}{LinkedIn \texttt{@dj0wns}}
+\newcommand{\languages}{C++, Python, C, PostgreSQL}
+\newcommand{\tools}{Git, Django, Linux, Qt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % New commands and environments
 
 % This defines how the name looks
 \newcommand{\bigname}[1]{
-  \begin{center}\huge\scshape#1\end{center}
+  \begin{center}\huge#1\end{center}
 }
 
 %\fontfamily{phv}
@@ -173,67 +172,56 @@
 
 \begin{document}
 
-\fontfamily{ppl} \selectfont
+\fontfamily{qhv} \selectfont
 
 % Name with horizontal rule
 \bigname{\name}
-\vspace{-6pt} \rule{\textwidth}{1pt}
-\vspace{-10pt}
+\vspace{-0pt}
+\begin{flushleft}
+ \begin{multicols}{3}
+  \email \\
+  \cellphone \\
+  \centering \textbf{Backend Software Engineer} \\
+  \centering New York City area (Stamford, CT) \\
+  \hfill\linkedin \\
+  \hfill\github \\
+ \end{multicols}
+\end{flushleft}
 
 \begin{center}
-% \begin{multicols}{3}
-  \cellphone \\
-  \email \\
-  \github \\
-% \end{multicols}
+ \begin{multicols}{2}
+  \textbf{\uppercase{Languages}} \languages \\
+  \textbf{\uppercase{Tools}} \tools \\
+ \end{multicols}
 \end{center}
 
-\vspace{-26 pt}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{\baselineskip}
-\begin{ressection}{Education}
-  \resbigitem{Bachelor of Science in Computer Science}{Arizona State University, Tempe, AZ}{May 2017}
-  % \ressubitem{Ira A. Fulton Schools of Engineering}
-  %\end{ressubsec}
-\end{ressection}
+\vspace{-5 pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\begin{ressection}{Qualifications}
-
-  \resitem{Experience using Git and bug trackers in a production environment}
-
-  \resitem{Strong written and verbal communication skills developed through team projects and presentations}
-
-  \begin{reslist}{Computer Languages and Environments:}
-    \ressubitem{Proficient in C and C++}
-    \ressubitem{Experience with Java, OpenMP, MPI, Bash, Gnuplot, and LaTeX}
-    \ressubitem{Exposure to Python, Go, Javascript, SQL, and Matlab}
-  \end{reslist}
-
-  \resitem{\textbf{Operating Systems:} Windows,
-  UNIX/Linux (Arch, Redhat, Ubuntu)}
-
-\end{ressection}
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{ressection}{Work Experience}
-  \begin{ressubsec}{Electrical Engineer}{Raytheon, Radar Signal Processing}{June 2017 -- Present}
-    \ressubitem{Software development for next generation Radar Signal Processing applications utilizing a distributed high performance computing architecture with strong emphasis on vectorization}
-    \ressubitem{Development consists of C++11 in Linux using Totalview, Boost.test, and Rational Clearcase}
+\begin{ressection}{Experience}
+  \begin{ressubsec}{Software Engineer}{Google, Google Ads Editor}{October 2018 -- Present}
+    % Editor Logging Project
+    \ressubitem{Led, designed, and implemented a new customer facing error logging solution to reduce the load on support staff---reducing size by 76\%, overhead by 15\%, and increased information}
+    % Local Server OAuth
+    \ressubitem{Redesigned our authentication system to leverage local server OAuth2 and developed supporting framework to monitor user success with the new flow}
+    % ICU Syntax Translation Project
+    \ressubitem{Upgraded all translation strings to use ICU pluralization syntax, allowing for vastly improved readability in other languages}
+    % Ad Types
+    \ressubitem{Collaborated with API teams to implement 23 new campaigns, ad types, and extensions}
+    % Bugfixes
+    \ressubitem{Investigated, tested, and fixed over 30 bugs and crashes and additionally refactored to improve performance}
+    % API Migratrion
+    \ressubitem{Ensured new features supported 2 API systems during a transitional API migration period}
   \end{ressubsec}
-  
-  \begin{ressubsec}{Software Engineering Intern}{Lawrence Livermore National Laboratory, High Energy Density Physics}{May 2016 -- August 2016}
-    \ressubitem{Implemented and analyzed various acceleration structures for use within LLNL's Monte Carlo Particle Transport Code, Mercury}
+  \begin{ressubsec}{Software Engineer}{Raytheon, Radar Signal Processing}{June 2017 -- September 2018}
+    \ressubitem{Worked closely with mathematicians to implement and optimize complex algebraic funcions}
+    \ressubitem{Created unit tests for 100\% code path coverage due to extreme reliability needs}
   \end{ressubsec}
-  
-  \begin{ressubsec}{Software Engineering Intern}{ViaSat Inc.}{May 2015 -- August 2015}
-    \ressubitem{Designed, implemented, and tested an Android collaboration application tailored for operation over satellite networks}
-  \end{ressubsec}
+
+  \resbigitemline{Software Engineer Intern}{Lawrence Livermore Natl. Lab, High Energy Density Physics}{Summer 2016}
+
+  \resbigitemline{Software Engineer Intern}{ViaSat Inc.}{Summer 2015}
 
 \end{ressection}
 
@@ -241,28 +229,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Projects}
-  \begin{ressubsecline}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C++ - 1 Person}
-    \ressubitem{In a collaborative effort with the Lawrence Livermore National Laboratory, I created a virtual reality visualization of the particle transport code Mercury, utilizing an HTC Vive}
-    \ressubitem{Developed a system for generating three dimensional primitives in Unity, modified a constructive solid geometry library to allow the creation of more complex shapes, and implemented HTC vive support}
+  \begin{ressubsecline}{AoEPulse.com}{Hobby Project}{Python Django with React.js Frontend}
+    \ressubitem{Open source stats website for Age of Empires 2 with over 6 million games analyzed and 1500 monthly unique users}
+    \ressubitem{Developed unique replay analysis to create the first large dataset driven by heuristics on player actions}
+    \ressubitem{Designed a schema and highly configurable dashboard with a context specific caching system optimizing data freshness}
+    \ressubitem{Reduced latency for common complex queries by storing data in custom intermediary tables}
+    \ressubitem{Implemented a request/response queue to allow for heavier queries from power users}
   \end{ressubsecline}
-  \begin{ressubsecline}{RAID-Like Cloud Storage}{Pennapps XV - Top 30}{C++/Python - 3 People}
-    \ressubitem{Created a mountable virtual drive for distributing, encrypting, and retrieving files across multiple cloud storage providers}
-    \ressubitem{Developed the FUSE filesystem implementation, added encryption and decryption functionality, developed the simulated RAID method of file splitting, and created the hooks for sending and receiving data}
+  \begin{ressubsecline}{Metal Arms Arbitrary Code Execution Exploit for the Original Xbox}{Hobby Project}{x86 Assembly}
+    \ressubitem{Independently discovered, researched, and exploited a novel format string vulnerability, the fifth ever discovered arbitrary code execution exploit on the Xbox and the first discoved in over 5 years}
+    \ressubitem{Additionally leveraged flaws in input validation and a limited buffer overflow}
   \end{ressubsecline}
+  \begin{ressubsecline}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C\#}
+    \ressubitem{Created a virtual reality visualization of Lawrence Livermore National Laboratory's Monte Carlo particle transport code, Mercury, utilizing an HTC Vive}
+    \ressubitem{Developed a system for generating three dimensional primitives in Unity, then modified a constructive solid geometry library to create more complex shapes, and implemented HTC vive support}
+  \end{ressubsecline}
+  \resbigitemline{RAID-Like Cloud Storage}{PennApps XV, Top 30}{C++ and Python}
+  \resmeditem{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
+  \resmeditem{Supercomputing 15 Conference}{Student Cluster Competition,}{Arizona Tri-University Team}
 
 \end{ressection}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\begin{ressection}{Competitions}
-  \begin{ressubsecline}{SuperComputing 15 Conference}{Student Cluster Competition 2015}{Arizona Tri-University Team}
-    \ressubitem{Collaborated with four other students to compile and run LINPACK, Trinity, WRF, MILC, HPC Repast and
-    HPCG in a UNIX environment using the Slurm workload manager}
-  \ressubitem{Competed to compute the provided data sets in the fastest time over a three day period}
-  \end{ressubsecline}
-  \begin{ressubsecshort}{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}
-    \ressubitem{Collaborated with two teammates to solve logic problems in C++}
-  \end{ressubsecshort}
+\vspace{\baselineskip}
+\begin{ressection}{Education}
+  \resbigitemline{Bachelor of Science in Computer Science}{Arizona State University, Tempe, AZ}{May 2017}
+  % \ressubitem{Ira A. Fulton Schools of Engineering}
+  %\end{ressubsec}
 \end{ressection}
+
 \end{document}
