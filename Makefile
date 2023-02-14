@@ -1,7 +1,7 @@
 all: resume.pdf png
 
 png: 
-	convert -density 300 resume.pdf images/resume.png
+	convert -density 300 -define png:color-type=6 resume.pdf images/resume.png
 
 resume.pdf: src/resume.tex
 	pdflatex src/resume.tex 
