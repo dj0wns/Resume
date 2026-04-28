@@ -8,7 +8,7 @@
 \usepackage{inconsolata}
 
 \pagestyle{empty}
-\geometry{letterpaper,tmargin=0.6in,bmargin=0.6in,lmargin=.85in,rmargin=.85in,headheight=0in,headsep=0in,footskip=.3in}
+\geometry{letterpaper,tmargin=.9in,bmargin=.9in,lmargin=.9in,rmargin=.9in,headheight=0in,headsep=0in,footskip=.3in}
 
 \setlength{\parindent}{0in}
 \setlength{\parskip}{0in}
@@ -226,7 +226,6 @@
 	    \ressubitem{Developed core components of a central Trade Data Warehouse (TDW) in dbt and BigQuery, owning the architecture of trade-level data schemas and the implementation of multi-stage vendor data cleansing and validation}
 	    \ressubitem{Engineered complex matching heuristics and FIFO logic to reconcile the relationship between execution fills and account-level allocations; established absolute data consistency across hundreds of accounts to ensure data parity in research and reporting}
 	    \ressubitem{Leveraged the decoupled TDW architecture to engineer end-to-end data integration pipelines--including all import/export processes--for a new Bloomberg OMS within 48 hours; enabled traders and compliance to evaluate live trade-lifecycle workflows}
-	    \ressubitem{Built a majority-voting validation framework utilizing ``two-of-three'' agreement logic to ensure the TDW remained correct and valid during BOD generation; proactively identified and mitigated vendor data errors to maintain a reliable system of record}
 	    \ressubitem{Delivered interactive Tableau dashboards providing traders, researchers, and PMs with insights into portfolio construction and execution latency; implemented per-security TWR to isolate discretionary performance by excluding fund-flow impact, supplemented by UBS HOLT and CFROI metrics for additional valuation context}
 	\end{ressubsecline}
   \begin{ressubsecline}{Software Engineer, C++ and Python}{Google, Google Ads Editor}{October 2018 -- December 2024}
@@ -251,19 +250,15 @@
     \ressubitem{Worked closely with mathematicians to implement and optimize complex algebraic functions}
     \ressubitem{Created unit tests for 100\% code path coverage due to extreme reliability needs}
   \end{ressubsecline}
-  \begin{ressubsecline}{Software Engineer Intern}{Lawrence Livermore Natl. Lab, High Energy Density Physics}{Summer 2016}
-    \ressubitem{Researched, implemented, and benchmarked different acceleration structures for use in highly distributed computing clusters to rank solution performance}
-  \end{ressubsecline}
-  \resbigitemline{Software Engineer Intern}{ViaSat Inc.}{Summer 2015}
 \end{ressection}
 
-
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Projects}
-  \begin{ressubseclinenodate}{Exavolt: Systems-Level Code Injection Framework}{Lead Developer \& Security Researcher}{x86 Assembly, PowerPC Assembly, Python}
-      \ressubitem{Independently discovered and chained a buffer overflow and format string vulnerability to achieve novel arbitrary code execution (ACE) on the Original Xbox, establishing a persistent entry point for running root-level code in a retail hardware environment}
-      \ressubitem{Architected the Exavolt framework to facilitate the arbitrary modification of core game logic and engine behavior via disk-embedded data and multi-stage assembly loaders; authored thousands of lines of handwritten assembly and automated the binary patching workflow via Python}
+  \begin{ressubseclinenodate}{Exavolt: Reverse Engineering and Assembly Code Injection}{Independent Research}{x86 and PowerPC Assembly, Python}
+    \ressubitem{Independently discovered and chained a buffer overflow and format string vulnerability to achieve novel arbitrary code execution (ACE) in a retail hardware environment, establishing a persistent entry point for running root-level code in a retail environment}
+    \ressubitem{Architected the Exavolt framework to facilitate the arbitrary modification of core game logic for the cult-classic Metal Arms; deployed thousands of lines of handwritten assembly via multi-stage loaders and automated the binary patching workflow in Python}
   \end{ressubseclinenodate}
   \begin{ressubseclinenodate}{AoEPulse.com}{Hobby Project}{Python Django with PostgreSQL and React.js}
     \ressubitem{Open source stats website for Age of Empires 2 with statistical analysis on 6+ million games serving 1500+ monthly unique users}
