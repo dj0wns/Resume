@@ -44,7 +44,7 @@
   \sectitle{#1}
   \vspace{-10pt}\rule{\textwidth}{0.5pt}
   \vspace{-10pt}
-  \begin{itemize}[leftmargin=13pt]
+  \begin{itemize}[leftmargin=0pt, rightmargin=-5pt, label={}]
   \vspace{-2pt}
 }{
   \end{itemize}
@@ -61,7 +61,7 @@
 % A ressubitem is a simple list element in anything but a ressection (second level)
 \newcommand{\ressubitem}[1]{
   \vspace{-1pt}
-  \item[--] \begin{flushleft} #1 \end{flushleft}
+  \item[$\bullet$] \begin{flushleft} #1 \end{flushleft}
 }
 
 % A resmeditem is a complex list element for stuff like jobs and education:
@@ -89,8 +89,15 @@
 
 \newcommand{\resbigitemlinenodate}[3]{
   \vspace{-1pt}
-  \item
+  \item[]
   %\item
+  \textbf{#1}---#2,
+  \textit{#3}
+}
+
+\newcommand{\resbigsubitemlinenodate}[3]{
+  \vspace{-1pt}
+  \item[$\bullet$]
   \textbf{#1}---#2,
   \textit{#3}
 }
@@ -118,7 +125,7 @@
 \newenvironment{ressubsec}[3]{
   \resbigitem{#1}{#2}{#3}
   \vspace{-4pt}
-  \begin{itemize}[leftmargin=*]
+  \begin{itemize}[leftmargin=*, rightmargin=5pt]
 
 }{
   \end{itemize}
@@ -136,7 +143,7 @@
 \newenvironment{ressubsecline}[3]{
   \resbigitemline{#1}{#2}{#3}
   \vspace{-2pt}
-  \begin{itemize}
+  \begin{itemize}[rightmargin=5pt]
 }{
   \end{itemize}
   \vspace{-2pt}
@@ -146,7 +153,15 @@
 \newenvironment{ressubseclinenodate}[3]{
   \resbigitemlinenodate{#1}{#2}{#3}
   \vspace{-2pt}
-  \begin{itemize}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+}
+
+\newenvironment{ressubitemlinenodate}[3]{
+  \resbigsubitemlinenodate{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
 }{
   \end{itemize}
 }
@@ -201,7 +216,7 @@
  \begin{multicols}{3}
   \email \\
   \cellphone \\
-  \centering \textbf{Backend Software Engineer} \\
+  \centering \textbf{Software Engineer} \\
   \centering New York City area (Stamford, CT) \\
   \hfill\linkedin \\
   \hfill\github \\
@@ -210,8 +225,8 @@
 
 \begin{center}
  \begin{multicols}{2}
-  \textbf{\uppercase{Languages}} \languages \\
-  \textbf{\uppercase{Tools}} \tools \\
+  \textbf{\uppercase{Languages}:} \languages \\
+  \textbf{\uppercase{Tools}:} \tools \\
  \end{multicols}
 \end{center}
 
@@ -220,7 +235,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Experience}
-	\begin{ressubsecline}{Application Developer, Python and BigQuery}{Select Equity Group}{January 2025 -- April 2026}
+	\begin{ressubsecline}{Software Engineer, Python and BigQuery}{Select Equity Group, New York City}{Jan 2025 -- Apr 2026}
 	    \ressubitem{Spearheaded the technical launch of a 2,000-name systematic factor-driven, beta-neutral fund; productionalized researcher models into an orchestrated Airflow/GKE pipeline and automated stock locate workflows to support the daily rebalance cycle}
 	    \ressubitem{Reduced factor generation cycles from multiple hours to \textasciitilde30 minutes for the fund launch by implementing BigQuery table partitioning and rewriting research workloads from full-history recalculations to incremental daily processing}
 	    \ressubitem{Developed core components of a central Trade Data Warehouse (TDW) in dbt and BigQuery, owning the architecture of trade-level data schemas and the implementation of multi-stage vendor data cleansing and validation}
@@ -228,7 +243,7 @@
 	    \ressubitem{Leveraged the decoupled TDW architecture to engineer end-to-end data integration pipelines--including all import/export processes--for a new Bloomberg OMS within 48 hours; enabled traders and compliance to evaluate live trade-lifecycle workflows}
 	    \ressubitem{Delivered interactive Tableau dashboards providing traders, researchers, and PMs with insights into portfolio construction and execution latency; implemented per-security time-weighted return to isolate discretionary performance by excluding fund-flow impact, supplemented by UBS HOLT and CFROI metrics for additional valuation context}
 	\end{ressubsecline}
-  \begin{ressubsecline}{Software Engineer, C++ and Python}{Google, Google Ads Editor}{October 2018 -- December 2024}
+  \begin{ressubsecline}{Software Engineer, C++ and Python}{Google, New York City}{Oct 2018 -- Dec 2024}
     % Half the ad spend goes through our application
     \ressubitem{Collaborated within a high-reliability engineering team to architect and deploy features for a mission-critical desktop application driving 50\% of all Google Ads spend}
     % Editor Logging Project
@@ -246,7 +261,7 @@
     % Ownership
     \ressubitem{Managed the full-lifecycle development of high-impact features, encompassing architectural design, cross-team coordination, and production-grade testing}
   \end{ressubsecline}
-  \begin{ressubsecline}{Software Engineer, C++}{Raytheon, Radar Signal Processing}{June 2017 -- September 2018}
+  \begin{ressubsecline}{Software Engineer, C++}{Raytheon, Radar Signal Processing}{Jun 2017 -- Sep 2018}
     \ressubitem{Collaborated with mathematicians to translate and optimize complex algebraic algorithms into high-performance C++ code for field-deployed HPC clusters}
     \ressubitem{Engineered comprehensive unit testing suites to guarantee 100\% code-path coverage, ensuring mission-critical reliability for large-scale, real-time signal processing workloads}
   \end{ressubsecline}
@@ -256,13 +271,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ressection}{Projects}
-  \begin{ressubseclinenodate}{Exavolt: Reverse Engineering and Assembly Code Injection}{Independent Research}{x86 and PowerPC Assembly, Python}
-    \ressubitem{Independently discovered and chained a buffer overflow and format string vulnerability to achieve novel arbitrary code execution in a retail hardware environment, establishing a persistent entry point for running root-level code}
+  \begin{ressubseclinenodate}{Reverse Engineering and Code Injection}{Independent Research}{x86 and PowerPC Assembly, Python}
+    \ressubitem{Independently discovered and chained a buffer overflow and format string exploit to achieve novel arbitrary code execution on the original Xbox in a retail hardware environment, establishing a persistent entry point for running root-level code--the 5th ever found on the platform and the first new vulnerability in over 5 years}
     \ressubitem{Architected the Exavolt framework to facilitate the arbitrary modification of core game logic for the cult-classic \textit{Metal Arms}; established an active community of 400+ members both developing and running custom modifications via automated Python deployment pipelines}
   \end{ressubseclinenodate}
   \begin{ressubseclinenodate}{AoEPulse.com}{Hobby Project}{Python Django with PostgreSQL and React.js}
-    \ressubitem{Open source stats website for Age of Empires 2 with statistical analysis on 6+ million games serving 1500+ monthly unique users}
-    \ressubitem{Developed unique replay analysis to create the first large dataset driven by heuristics on player actions}
+    \ressubitem{Architected and maintain a high-traffic analytics platform for Age of Empires 2, processing a dataset of 6M+ games to serve 1,500+ monthly unique users}
+    \ressubitem{Engineered a custom telemetry parser to extract player-action heuristics from binary replay files, establishing a large-scale behavioral data source for the competitive community}
   \end{ressubseclinenodate}
   \resbigitemlinenodate{RAID-Like Cloud Storage}{PennApps XV, Top 30}{C++ and Python}
   \resbigitemlinenodate{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}{C++}
@@ -273,10 +288,10 @@
 \begin{ressection}{Education}
   \begin{ressubsecline}{Bachelor of Science in Computer Science}{Arizona State University, Tempe, AZ}{May 2017}
     \ressubitem{\textbf{Barrett, The Honors College} with the Provost Scholarship}
-    \begin{ressubseclinenodate}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C\#}
-      \ressubitem{Created a virtual reality visualization of Lawrence Livermore National Laboratory's Monte Carlo particle transport code, Mercury, utilizing an HTC Vive}
-      \ressubitem{Developed a system for generating three dimensional primitives in Unity, then modified a constructive solid geometry library to create more complex shapes, and implemented HTC Vive support}
-    \end{ressubseclinenodate}
+    \begin{ressubitemlinenodate}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C\#}
+      \ressubitem{Developed a high-fidelity VR visualization platform for Lawrence Livermore National Laboratory's particle transport code, enabling interactive 3D analysis of complex physics simulations}
+      \ressubitem{Engineered a procedural geometry engine in Unity to generate complex structures via modified constructive solid geometry libraries; integrated spatial tracking for real-time interactive manipulation}
+    \end{ressubitemlinenodate}
   \end{ressubsecline}
 \end{ressection}
 
