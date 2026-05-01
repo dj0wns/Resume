@@ -1,10 +1,14 @@
-all: resume.pdf png
+all: resume_business.pdf resume.pdf png
 
 png: 
 	convert -density 300 -define png:color-type=6 -background white -alpha remove -alpha off resume.pdf images/resume.png
 
 resume.pdf: src/resume.tex
 	pdflatex src/resume.tex 
+	rm *.log *.aux
+
+resume_business.pdf: src/resume_business.tex
+	pdflatex src/resume_business.tex 
 	rm *.log *.aux
 
 cover.pdf: src/cover.tex  Data/paragraph*.txt

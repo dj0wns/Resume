@@ -1,0 +1,344 @@
+\documentclass[10pt,oneside]{article}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{inconsolata}
+
+\pagestyle{empty}
+\geometry{letterpaper,tmargin=.7in,bmargin=.7in,lmargin=.9in,rmargin=.9in,headheight=0in,headsep=0in,footskip=.3in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+% Name and contact information
+\newcommand{\name}{Derek Jones}
+\newcommand{\cellphone}{(925) 348-0232}
+\newcommand{\email}{DerekJones.Dev@gmail.com}
+\newcommand{\github}{GitHub \texttt{@dj0wns}}
+\newcommand{\linkedin}{LinkedIn \texttt{@dj0wns}}
+\newcommand{\languages}{C++, Python, SQL}
+\newcommand{\tools}{BigQuery, Airflow, dbt, Linux}
+\newcommand{\hobbies}{Tennis, Outrigger Canoe, Chess, Car Mechanics, Sailing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New commands and environments
+
+% This defines how the name looks
+\newcommand{\bigname}[1]{
+  \begin{center}\huge#1\end{center}
+}
+
+%\fontfamily{phv}
+\newcommand{\sectitle}[1]{
+  \begin{flushleft}{\selectfont\Large#1}\end{flushleft}
+}
+
+% A ressection is a main section (<H1>Section</H1>)
+\newenvironment{ressection}[1]{
+  \vspace{0pt}
+  \sectitle{#1}
+  \vspace{-10pt}\rule{\textwidth}{0.5pt}
+  \vspace{-10pt}
+  \begin{itemize}[leftmargin=0pt, rightmargin=-5pt, label={}]
+  \vspace{-2pt}
+  }{
+  \end{itemize}
+}
+
+% A resitem is a simple list element in a ressection (first level)
+\newcommand{\resitem}[1]{
+  \vspace{-4pt}
+  %\item \begin{flushleft} #1 \end{flushleft}
+  \item \begin{flushleft} #1 \end{flushleft}
+  %\item[\(\circ\) ] \begin{flushleft} #1 \end{flushleft}
+}
+
+% A ressubitem is a simple list element in anything but a ressection (second level)
+\newcommand{\ressubitem}[1]{
+  \vspace{-1pt}
+  \item[$\bullet$] \begin{flushleft} #1 \end{flushleft}
+}
+
+% A resmeditem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+\newcommand{\resmeditem}[2]{
+  \vspace{-5pt}
+  \item
+  %\item
+  \textbf{#1}---#2
+}
+
+% A resbigitem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+%  Arg 3: Title and/or date range
+%  Arg 4: Tools
+\newcommand{\resbigitemline}[4]{
+  \vspace{-1pt}
+  \item
+  %\item
+  \textbf{#1}---#4
+  \hfill
+  \textit{#3} \\
+  #2
+
+}
+
+\newcommand{\resbigitemlinenodate}[3]{
+  \vspace{-1pt}
+  \item[]
+  %\item
+  \textbf{#1}---#3 \\
+  #2
+}
+
+\newcommand{\resbigitemlinenotools}[3]{
+  \vspace{-1pt}
+  \item[]
+  %\item
+  \textbf{#1}---#2
+  \hfill
+  \textit{#3}
+}
+
+\newcommand{\resbigitemlinenotoolsnodate}[3]{
+  \vspace{-1pt}
+  \item[]
+  %\item
+  \textbf{#1}---#3 | \textit{#2}
+}
+
+\newcommand{\resbigitemlinenotoolsnodatenopipe}[3]{
+  \vspace{-1pt}
+  \item[]
+  %\item
+  \textbf{#1}---#3, \textit{#2}
+}
+
+\newcommand{\resbigsubitemlinenodate}[3]{
+  \vspace{-1pt}
+  \item[$\bullet$]
+  \textbf{#1}---#3 \\
+  #2
+}
+
+% A resbigitem is a complex list element for stuff like jobs and education:
+%  Arg 1: Name of company or university
+%  Arg 2: Location
+%  Arg 3: Title and/or date range
+\newcommand{\resbigitem}[3]{
+  \vspace{-5pt}
+  \item
+  %\item
+  \textbf{#1}---#2
+  \textit{#3}
+}
+
+% A resititem is a list element that just does an italic item for the sole
+% purpose of expanding jobs at the same company
+\newcommand{\resititem}[1]{
+  \vspace{-5pt}
+  \textit{#1}
+}
+
+% This is a list that comes with a resbigitem
+\newenvironment{ressubsec}[3]{
+  \resbigitem{#1}{#2}{#3}
+  \vspace{-4pt}
+  \begin{itemize}[leftmargin=*, rightmargin=5pt]
+
+}{
+  \end{itemize}
+}
+% This is a list that comes with a resbigitem
+\newenvironment{ressubsecshort}[2]{
+  \resmeditem{#1}{#2}
+  \vspace{-4pt}
+  \begin{itemize}
+  }{
+  \end{itemize}
+}
+
+%List with inline resbigitem
+\newenvironment{ressubsecline}[4]{
+  \resbigitemline{#1}{#2}{#3}{#4}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+  \vspace{-2pt}
+}
+
+%List with inline resbigitem
+\newenvironment{ressubseclinenodate}[3]{
+  \resbigitemlinenotoolsnodate{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+}
+
+%List with inline resbigitem
+\newenvironment{ressubseclinenotoolsnodate}[3]{
+  \resbigitemlinenotoolsnodate{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+}
+
+%List with inline resbigitem
+\newenvironment{ressubseclinenotools}[3]{
+  \resbigitemlinenotools{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+}
+
+\newenvironment{ressubitemlinenodate}[3]{
+  \resbigsubitemlinenodate{#1}{#2}{#3}
+  \vspace{-2pt}
+  \begin{itemize}[rightmargin=5pt]
+}{
+  \end{itemize}
+}
+
+% This is a simple sublist
+\newenvironment{reslist}[1]{
+  \resitem{\textbf{#1}}
+  \vspace{-5pt}
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% A resreference is a references section
+\newenvironment{resreference}[2]{
+  \vspace{14pt}
+  {\fontfamily{phv}\selectfont\Large#1}
+
+
+  \vspace{10pt}
+
+
+  \begin{tabular}{#2}
+  \vspace{0pt}
+}{
+  \end{tabular}
+}
+
+% reduce spacing between lines
+
+
+\AfterEndEnvironment{ressubsec}{\vspace{-.2\baselineskip}}
+
+\AfterEndEnvironment{ressubsecshort}{\vspace{-.5\baselineskip}}
+
+\AfterEndEnvironment{ressubitem}{\vspace{-.5\baselineskip}}
+
+\AfterEndEnvironment{resitem}{\vspace{-.5\baselineskip}}
+\BeforeBeginEnvironment{ressection}{\vspace{-.2\baselineskip}}
+\AfterEndEnvironment{ressection}{\vspace{0\baselineskip}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now for the actual document:
+
+\begin{document}
+
+\fontfamily{qhv} \selectfont
+
+% Name with horizontal rule
+\bigname{\name}
+\vspace{-5pt}
+\begin{flushleft}
+ \begin{multicols}{3}
+  \email \\
+  \cellphone \\
+  \centering \textbf{Software Engineer} \\
+  \centering New York City area (Stamford, CT) \\
+  \hfill\linkedin \\
+  \hfill\github \\
+ \end{multicols}
+\end{flushleft}
+
+\begin{center}
+ \begin{multicols}{2}
+  \textbf{\uppercase{Languages}:} \languages \\
+  \textbf{\uppercase{Tools}:} \tools \\
+ \end{multicols}
+\end{center}
+
+\vspace{-5 pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ressection}{Experience}
+	\begin{ressubsecline}{Software Engineer}{Select Equity Group, New York City}{Jan 2025 -- Apr 2026}{Python, BigQuery, Google Cloud Platform, dbt, Airflow}
+    \ressubitem{Engineered the technical infrastructure for a 2,000-name systematic fund launch, automating daily rebalance and stock-locate workflows to ensure seamless, Day 1 execution across a broad universe of securities with zero operational delay}
+    \ressubitem{Operationalized and optimized the core back-testing and factor-generation framework for the systematic fund; engineered a high-performance parallelized pipeline that reduced simulation latency by 80\%, enabling the fund to rapidly iterate on and refine daily rebalancing strategies}
+    \ressubitem{Centralized disparate trade and position data from four external vendors into a Trade Data Warehouse to serve as a single source of truth; implemented a consensus-driven validation engine to ensure 100\% data integrity and operational continuity during vendor outages}
+    \ressubitem{Fast-tracked a firm-wide, P0 priority Bloomberg OMS migration by delivering cloud-native integration processes within 48 hours, enabling the trading desk to immediately begin live workflow evaluation and testing}
+    \ressubitem{Launched a security performance dashboard utilizing time-weighted returns to isolate individual position performance from the distortion of fund-flow impacts; provided granular visibility across portfolio, strategy, and firm-wide levels while integrating UBS HOLT and CFROI metrics to anchor results against fundamental valuation benchmarks}
+    \ressubitem{Built an Execution Analytics dashboard to track the full trade lifecycle from order creation to final allocation; pinpointed specific latency bottlenecks and provided the transparency required to identify process inefficiencies and evaluate broker performance}
+	\end{ressubsecline}
+  \begin{ressubsecline}{Software Engineer}{Google, New York City}{Oct 2018 -- Dec 2024}{C++, Python, Qt}
+    % Half the ad spend goes through our application
+    \ressubitem{Collaborated within a high-reliability engineering team to architect and deploy features for a mission-critical desktop application driving 50\% of all Google Ads spend}
+    % Editor Logging Project
+    \ressubitem{Led the end-to-end design and implementation of a client-facing error logging solution, reducing data footprint by 76\% and runtime overhead by 15\% while enhancing diagnostic fidelity}
+    % Local Server OAuth
+    \ressubitem{Re-engineered the authentication layer to leverage local-server OAuth2; developed a supporting monitoring framework to analyze and optimize user authentication success rates}
+    % ICU Syntax Translation Project
+    \ressubitem{Optimized the internationalization pipeline by migrating global translation strings to ICU syntax, significantly improving localization accuracy and readability}
+    % Ad Types
+    \ressubitem{Partnered with cross-functional API teams to integrate 23 new campaign types and extensions into the core application logic}
+    % Bug fixes
+    \ressubitem{Resolved 30+ critical stability issues and crashes; refactored legacy components to enhance application performance and long-term maintainability}
+    % API Migration
+    \ressubitem{Maintained dual-system API compatibility during a large-scale transitional migration, ensuring feature parity and zero service interruption for end-users}
+    % Ownership
+    \ressubitem{Managed the full-lifecycle development of high-impact features, encompassing architectural design, cross-team coordination, and production-grade testing}
+  \end{ressubsecline}
+  \begin{ressubsecline}{Software Engineer}{Raytheon, Boston Area}{Jun 2017 -- Sep 2018}{C++}
+    \ressubitem{Collaborated with mathematicians to translate and optimize complex algebraic radar signal processing algorithms into high-performance C++ code for field-deployed HPC clusters}
+    \ressubitem{Engineered comprehensive unit testing suites to guarantee 100\% code-path coverage, ensuring mission-critical reliability for large-scale, real-time signal processing workloads}
+  \end{ressubsecline}
+\end{ressection}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ressection}{Projects}
+  \begin{ressubseclinenodate}{Reverse Engineering and Code Injection}{Independent Research}{x86 and PowerPC Assembly, Python}
+    \ressubitem{Independently discovered and chained a buffer overflow and format string exploit to achieve novel arbitrary code execution on the original Xbox in a retail hardware environment, establishing a persistent entry point for running root-level code--the 5th ever found on the platform and the first new vulnerability in over 5 years}
+    \ressubitem{Architected the Exavolt framework to facilitate the arbitrary modification of core game logic for the cult-classic \textit{Metal Arms}; established an active community of 400+ members both developing and running custom modifications via automated Python deployment pipelines}
+  \end{ressubseclinenodate}
+  \begin{ressubseclinenodate}{AoEPulse.com}{Hobby Project}{Python Django, PostgreSQL,React.js}
+    \ressubitem{Architected and maintain a high-traffic analytics platform for Age of Empires 2, processing a dataset of 6M+ games to serve 1,500+ monthly unique users}
+    \ressubitem{Engineered a custom telemetry parser to extract player-action heuristics from binary replay files, establishing a large-scale behavioral data source for the competitive community}
+  \end{ressubseclinenodate}
+  \resbigitemlinenotoolsnodate{RAID-Like Cloud Storage}{PennApps XV, Top 30}{C++, Python}
+  \resbigitemlinenotoolsnodate{ASU Programming Competition 2016}{1\textsuperscript{st} Place Overall}{C++}
+  \resbigitemlinenotoolsnodatenopipe{Supercomputing 15 Conference}{Student Cluster Competition}{Arizona Tri-University Team}
+\end{ressection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ressection}{Education}
+  \begin{ressubseclinenotools}{Bachelor of Science in Computer Science}{Arizona State University, Tempe, AZ}{May 2017}
+    \ressubitem{\textbf{Barrett, The Honors College} with the Provost Scholarship}
+    \begin{ressubitemlinenodate}{Virtual Reality Visualization of Monte Carlo Particle Transport}{Honors Thesis}{C\#}
+      \ressubitem{Developed a high-fidelity VR visualization platform for Lawrence Livermore National Laboratory's particle transport code, enabling interactive 3D analysis of complex physics simulations}
+      \ressubitem{Engineered a procedural geometry engine in Unity to generate complex structures via modified constructive solid geometry libraries; integrated spatial tracking for real-time interactive manipulation}
+    \end{ressubitemlinenodate}
+  \end{ressubseclinenotools}
+\end{ressection}
+
+\textbf{Hobbies} \hobbies \\
+
+\end{document}
